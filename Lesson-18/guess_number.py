@@ -10,10 +10,10 @@
 # По ходу игры после каждой попытки пользователя компьютер выводит сообщение, было ли число пользователя
 # больше или меньше загаданного числа: "Загаданное число больше.", "Загаданное число меньше." соответственно.
 import random
-from itertools import count
 
 
-def game():
+
+def guess_number():
     number = random.randint(1,100)
     user_trues = []
     while True:
@@ -22,6 +22,10 @@ def game():
             print(f'Ваши попытки: {user_trues} ')
             break
         gess = int(input('Введите число от 0 до 100: '))
+        if gess >= 101:
+            print(f'Число {gess} больше числа 100! Введите число от 0 до 100.')
+            continue
+
         user_trues.append(gess)
         if gess == number:
             print(f"Отлично! Вы угадали число {number} с {len(user_trues)} попытки!")
@@ -34,5 +38,7 @@ def game():
 
 
 
+
+
 if __name__ == "__main__":
-    game()
+    guess_number()

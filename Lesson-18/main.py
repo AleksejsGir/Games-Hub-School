@@ -5,7 +5,12 @@
 # где находится меню и в котором запускается игра.
 #
 # main.py
-#
+from guess_number import guess_number
+
+
+
+
+
 def main():
     while True:
         print("\\nДобро пожаловать в Game Hub!")
@@ -16,7 +21,29 @@ def main():
         print("5. Текстовый квест")
         print("6. Сапер")
         print("7. Выход")
-        choice = input("Выберите игру (1-6): ")
+        choice = input('Выберите игру (1-6): ')
+        if choice == '1':
+            guess_number()
+        elif choice == '2':
+            rock_paper_scissors()
+        elif choice == '3':
+            quiz()
+        elif choice == '4':
+            hangman()
+        elif choice == '5':
+            text_adventure()
+        elif choice == '6':
+            minesweeper()
+        elif choice == '7':
+            print('Спасибо за игру!')
+            break
+        else:
+            print('Неверный ввод. Выберите число от 1 до 7.')
+
+
+
+if __name__ == "__main__":
+    main()
 
         # допишите файл main.py в конце и протестируйте работоспособность всех игр.
 #
