@@ -1,11 +1,4 @@
 # Игра: Сапёр
-import random
-
-def game_bord(size, mines):
-  bord = [['-' for _ in range(size)] for _ in range(size)]
-  mines = random.sample(range(size * size))
-
-
 
 #
 # Цель игры: открыть все клетки, не содержащие мин.

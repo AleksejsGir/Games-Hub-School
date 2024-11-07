@@ -6,6 +6,8 @@
 #
 # main.py
 import quiz_game
+import guess_number
+
 
 def main():
     while True:
@@ -19,7 +21,7 @@ def main():
         print("7. Выход")
         choice = input("Выберите игру (1-6): ")
         if choice == "1":
-            pass
+            guess_number.guess_number()
         if choice == "2":
             pass
         if choice == "3":
@@ -33,8 +35,12 @@ def main():
         if choice == "7":
             print("game over")
             break
+        else:
+            print("Неверный ввод. Пожалуйста, выберите число от 1 до 7.")
 
-main()
+            
+if __name__ == "__main__":
+    main()
 
         # допишите файл main.py в конце и протестируйте работоспособность всех игр.
 #
