@@ -17,7 +17,7 @@ def game():
     print("Добро пожаловать в игру 'Камень, ножницы, бумага'!")
     print("Цель: Набрать на 3 победы больше, чем соперник.\n")
 
-    while abs(user_score - computer_score) < 3:
+    while (user_score - computer_score) < 3:
         # Компьютер выбирает случайный вариант
         computer_choice = random.choice(options)
         # Игрок вводит свой выбор
