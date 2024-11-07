@@ -6,6 +6,7 @@
 #
 # main.py
 import quiz_game
+import text_adventure
 import guess_number
 
 
@@ -29,7 +30,7 @@ def main():
         if choice == "4":
             pass
         if choice == "5":
-            pass
+            text_adventure.text_adventure()
         if choice == "6":
             pass
         if choice == "7":
