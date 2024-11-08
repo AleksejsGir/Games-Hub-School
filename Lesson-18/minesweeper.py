@@ -1,6 +1,59 @@
 # Игра: Сапёр
+import random
 
-#
+
+def game_board(size, mines):
+    board = [['-' for _ in range(size)] for _ in range(size)]
+    mine_positions = set()
+    while len(mine_positions) < mines:
+        mine_positions.add((random.randint(0, size - 1), random.randint(0, size - 1)))
+    for (x, y) in mine_positions:
+        board[x][y] = '*'
+    return board, mine_positions
+
+
+def print_board(board):
+    for row in board:
+        print(' '.join(row))
+    print()
+
+
+def count_mines(board, x, y):
+    size = len(board)
+    count = 0
+    for i in range(max(0, x - 1), min(size, x + 2)):
+        for j in range(max(0, y - 1), min(size, y + 2)):
+            if board[i][j] == '*':
+                count += 1
+    return count
+
+
+def minesweeper(size=5, mines=5):
+    board, mine_positions = game_board(size, mines)
+    opened_board = [['-' for _ in range(size)] for _ in range(size)]
+    safe_cells = size * size - mines
+    opened_cells = 0
+
+    while opened_cells < safe_cells:
+        print_board(opened_board)
+        x, y = map(int, input("Введите координаты клетки (строка столбец): ").split())
+        if (x, y) in mine_positions:
+            print("Вы проиграли! Вы попали на мину.")
+            print_board(board)
+            return
+        if opened_board[x][y] == '-':
+            mines_count = count_mines(board, x, y)
+            opened_board[x][y] = str(mines_count)
+            opened_cells += 1
+
+
+    print("Поздравляем! Вы открыли все безопасные клетки.")
+    print_board(opened_board)
+
+if __name__ == "__main__":
+    minesweeper()
+    print("Модуль запущен на прямую.")
+
 # Цель игры: открыть все клетки, не содержащие мин.
 #
 # Правила игры:

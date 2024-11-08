@@ -9,7 +9,7 @@ import quiz_game
 import rock_paper_scissors
 import text_adventure
 import guess_number
-
+import minesweeper
 
 def main():
     while True:
@@ -33,7 +33,7 @@ def main():
         elif choice == "5":
             text_adventure.text_adventure()
         elif choice == "6":
-            pass
+            minesweeper.minesweeper()
         elif choice == "7":
             print("game over")
             break
