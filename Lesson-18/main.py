@@ -6,6 +6,7 @@
 #
 # main.py
 import quiz_game
+import rock_paper_scissors
 import text_adventure
 import guess_number
 
@@ -23,17 +24,17 @@ def main():
         choice = input("Выберите игру (1-6): ")
         if choice == "1":
             guess_number.guess_number()
-        if choice == "2":
-            pass
-        if choice == "3":
+        elif choice == "2":
+            rock_paper_scissors.rock_paper_scissors()
+        elif choice == "3":
             quiz_game.quiz()
-        if choice == "4":
+        elif choice == "4":
             pass
-        if choice == "5":
+        elif choice == "5":
             text_adventure.text_adventure()
-        if choice == "6":
+        elif choice == "6":
             pass
-        if choice == "7":
+        elif choice == "7":
             print("game over")
             break
         else:
