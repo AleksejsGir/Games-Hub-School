@@ -1,5 +1,56 @@
 # Игра "Виселица"
-#
+import random
+
+
+words = ["python", "school", "london", "barcelona", "windows"]
+
+word = random.choice(words)
+
+guessed_word = ['*' for _ in word]
+attempts = 6
+guessed_letters = set()
+
+
+def hangman():
+    print("Слово:", " ".join(guessed_word))
+    print("Угаданные буквы:", " ".join(sorted(guessed_letters)))
+    print(f"Оставшиеся попытки: {attempts}")
+    print()
+
+
+while attempts > 0 and '*' in guessed_word:
+    hangman()
+    guess = input("Введите букву: ").lower()
+
+    if len(guess) != 1 or not guess.isalpha():
+        print("Некорректный ввод. Пожалуйста, введите одну букву.")
+        continue
+
+    if guess in guessed_letters:
+        print("Вы уже вводили эту букву. Попробуйте другую.")
+        continue
+
+    guessed_letters.add(guess)
+
+    if guess in word:
+        for idx, letter in enumerate(word):
+            if letter == guess:
+                guessed_word[idx] = guess
+        print(f"Отлично! Буква '{guess}' есть в слове.")
+    else:
+        attempts -= 1
+        print(f"К сожалению, буква '{guess}' отсутствует в слове. Осталось {attempts} попыток.")
+
+if '*' not in guessed_word:
+    print("Поздравляем! Вы угадали слово:", word)
+else:
+    print("Вы проиграли! Загаданное слово было:", word)
+
+if __name__ == "__main__":
+    hangman()
+    print("Модуль запущен на прямую.")
+
+
 # Напишите программу для игры "Виселица". Игроку дается слово, которое он должен угадать, называя буквы.
 # Если игрок называет неправильную букву, ему начисляется штрафное очко.
 # Игра заканчивается победой при угадывании слова или проигрышем при достижении лимита штрафных очков.

@@ -9,6 +9,7 @@ import quiz_game
 import rock_paper_scissors
 import text_adventure
 import guess_number
+import hangman
 import minesweeper
 
 def main():
@@ -29,7 +30,7 @@ def main():
         elif choice == "3":
             quiz_game.quiz()
         elif choice == "4":
-            pass
+            hangman.hangman()
         elif choice == "5":
             text_adventure.text_adventure()
         elif choice == "6":
