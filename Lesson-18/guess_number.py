@@ -42,3 +42,4 @@ def guess_number():
 
 if __name__ == "__main__":
     guess_number()
+    print("Модуль запущен на прямую.")

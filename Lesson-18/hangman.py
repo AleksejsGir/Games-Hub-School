@@ -1,50 +1,47 @@
 # Игра "Виселица"
 import random
 
-
 words = ["python", "school", "london", "barcelona", "windows"]
-
 word = random.choice(words)
-
 guessed_word = ['*' for _ in word]
-attempts = 6
+
 guessed_letters = set()
 
-
-def hangman():
+def print_game():
     print("Слово:", " ".join(guessed_word))
-    print("Угаданные буквы:", " ".join(sorted(guessed_letters)))
-    print(f"Оставшиеся попытки: {attempts}")
+    print("Введённые буквы:", " ".join(sorted(guessed_letters)))
     print()
 
+def hangman():
+    attempts = 6
+    print(f"Оставшиеся попытки: {attempts}")
+    while attempts > 0 and '*' in guessed_word:
+        print_game()
+        guess = input("Введите букву: ").lower()
 
-while attempts > 0 and '*' in guessed_word:
-    hangman()
-    guess = input("Введите букву: ").lower()
+        if len(guess) != 1 or not guess.isalpha():
+            print("Некорректный ввод. Пожалуйста, введите одну букву.")
+            continue
 
-    if len(guess) != 1 or not guess.isalpha():
-        print("Некорректный ввод. Пожалуйста, введите одну букву.")
-        continue
+        if guess in guessed_letters:
+            print("Вы уже вводили эту букву. Попробуйте другую.")
+            continue
 
-    if guess in guessed_letters:
-        print("Вы уже вводили эту букву. Попробуйте другую.")
-        continue
+        guessed_letters.add(guess)
 
-    guessed_letters.add(guess)
+        if guess in word:
+            for i, letter in enumerate(word):
+                if letter == guess:
+                    guessed_word[i] = guess
+            print(f"Отлично! Буква '{guess}' есть в слове.")
+        else:
+            attempts -= 1
+            print(f"К сожалению, буква '{guess}' отсутствует в слове. Осталось {attempts} попыток.")
 
-    if guess in word:
-        for idx, letter in enumerate(word):
-            if letter == guess:
-                guessed_word[idx] = guess
-        print(f"Отлично! Буква '{guess}' есть в слове.")
+    if '*' not in guessed_word:
+        print("Поздравляем! Вы угадали слово:", word)
     else:
-        attempts -= 1
-        print(f"К сожалению, буква '{guess}' отсутствует в слове. Осталось {attempts} попыток.")
-
-if '*' not in guessed_word:
-    print("Поздравляем! Вы угадали слово:", word)
-else:
-    print("Вы проиграли! Загаданное слово было:", word)
+        print("Вы проиграли! Загаданное слово было:", word)
 
 if __name__ == "__main__":
     hangman()
