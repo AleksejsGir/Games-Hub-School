@@ -10,6 +10,7 @@ import rock_paper_scissors
 import text_adventure
 import guess_number
 import hangman
+import hangman_visual_effect
 import minesweeper
 
 def main():
@@ -19,10 +20,11 @@ def main():
         print("2. Камень, ножницы, бумага")
         print("3. Викторина")
         print("4. Виселица")
-        print("5. Текстовый квест")
-        print("6. Сапер")
-        print("7. Выход")
-        choice = input("Выберите игру (1-6): ")
+        print("5. Виселица с визуальным эффектом")
+        print("6. Текстовый квест")
+        print("7. Сапер")
+        print("8. Выход")
+        choice = input("Выберите игру (1-7): ")
         if choice == "1":
             guess_number.guess_number()
         elif choice == "2":
@@ -32,14 +34,16 @@ def main():
         elif choice == "4":
             hangman.hangman()
         elif choice == "5":
-            text_adventure.text_adventure()
+            hangman_visual_effect.game_hangman()
         elif choice == "6":
-            minesweeper.minesweeper()
+            text_adventure.text_adventure()
         elif choice == "7":
+            minesweeper.minesweeper()
+        elif choice == "8":
             print("game over")
             break
         else:
-            print("Неверный ввод. Пожалуйста, выберите число от 1 до 7.")
+            print("Неверный ввод. Пожалуйста, выберите число от 1 до 8.")
 
             
 if __name__ == "__main__":
